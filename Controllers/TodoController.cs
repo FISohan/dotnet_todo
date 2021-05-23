@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using dotnet_todo.Model;
 using dotnet_todo.Dtos;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnet_todo.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class TodoController : ControllerBase

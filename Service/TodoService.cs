@@ -60,7 +60,7 @@ namespace dotnet_todo.Service
             catch (System.Exception ex)
             {
 
-                respone.Message = ex.ToString();
+                respone.Message = ex.Message.ToString();
                 respone.Success = false;
             }
 
@@ -82,7 +82,7 @@ namespace dotnet_todo.Service
         public async Task<ServiceResponse<Todo>> GetTodoById(int id)
         {
             ServiceResponse<Todo> respone = new ServiceResponse<Todo>();
-            Todo todo = _context.Todos.FirstOrDefault(c => c.Id == id);
+            Todo todo = await _context.Todos.FirstOrDefaultAsync(c => c.Id == id);
             if (todo == null)
             {
                 respone.Success = false;
